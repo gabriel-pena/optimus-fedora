@@ -1,0 +1,23 @@
+#!/bin/bash
+
+PACKAGE_VERSION="0.1"
+PACKAGE_NAME="optimus-fedora"
+FPM="fpm"
+
+rm -rf build
+rm -rf *.rpm
+mkdir build
+mkdir build/opt
+mkdir build/opt/optimus-fedora
+mkdir build/etc
+mkdir build/etc/xdg
+mkdir build/etc/xdg/autostart
+mkdir build/usr/bin
+cp optimus-fedora-tray.py build/opt/optimus-fedora/
+cp LICENSE build/opt/optimus-fedora/
+cp -r locales build/opt/optimus-fedora/
+cp build_info/optimus-fedora.desktop build/etc/xdg/autostart/
+cp optimus-fedora build/usr/bin/
+chmod +x build/usr/bin/optimus-fedora
+chmod +x build/opt/optimus-fedora/optimus-fedora-tray.py
+$FPM -s dir --chdir=build -t rpm -a x86_64 -n $PACKAGE_NAME -v $PACKAGE_VERSION
