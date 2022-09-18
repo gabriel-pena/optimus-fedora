@@ -1,7 +1,8 @@
 [Desktop Entry]
-Version=0.2
-Type=Application
+Encoding=UTF-8
 Name=Optimus Fedora
-Exec=/opt/optimus-fedora/main.py
+Version=1.0
+Type=Application
+Exec=/opt/optimus-fedora/optimus-fedora-tray.py
 Path=/opt/optimus-fedora
-Actions=
+Terminal=false
