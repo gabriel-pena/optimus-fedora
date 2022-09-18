@@ -1,14 +1,14 @@
 #!/bin/bash
 
 if [[ $1 == "nvidia" ]]; then
-        LINE_OUTPUT_CLASS=$(grep -n "OutputClass" /usr/share/X11/xorg.conf.d/nv>
-        LINE_END_SECTION=$(grep -n "EndSection" /usr/share/X11/xorg.conf.d/nvid>
-        if [[ $((LINE_OUTPUT_CLASS)) -lt $((LINE_END_SECTION)) ]]; then
-                cp -p /usr/share/X11/xorg.conf.d/nvidia.conf /etc/X11/xorg.conf>
-                sed -i "$LINE_END_SECTION i\        \Option \"PrimaryGPU\" \"ye>
+        LINE_OUTPUT_CLASS=$(grep -n "OutputClass" /usr/share/X11/xorg.conf.d/nvidia.conf | head -n 1 | cut -d: -f1)
+        LINE_END_SECTION=$(grep -n "EndSection" /usr/share/X11/xorg.conf.d/nvidia.conf | head -n 1 | cut -d: -f1)
+	if [[ $((LINE_OUTPUT_CLASS)) -lt $((LINE_END_SECTION)) ]]; then
+		cp -p /usr/share/X11/xorg.conf.d/nvidia.conf /etc/X11/xorg.conf.d/nvidia-gpu-primary.conf
+		sed -i "$LINE_END_SECTION i\        \Option \"PrimaryGPU\" \"yes\"" /etc/X11/xorg.conf.d/nvidia-gpu-primary.conf
     fi
 fi
 
 if [[ $1 == "offload" ]]; then
-        rm /etc/X11/xorg.conf.d/nvidia-gpu-primary.conf
+	rm /etc/X11/xorg.conf.d/nvidia-gpu-primary.conf
 fi
