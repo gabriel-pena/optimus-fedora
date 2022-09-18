@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=0.2
+Type=Application
+Name=Optimus Fedora
+Exec=/opt/optimus-fedora/main.py
+Path=/opt/optimus-fedora
+Actions=
