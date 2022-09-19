@@ -4,7 +4,7 @@
 
 1. Install the dependencies
 
-`sudo dnf install python3 python3-gobject libindicator-gtk3`
+`sudo dnf install python3 python3-gobject libappindicator-gtk3`
 
 2. Download RPM File and Install it
 
